@@ -7,7 +7,6 @@ import ValuesAdventure from "./components/ValuesAdventure";
 import MosqueCorner from "./components/MosqueCorner";
 import StarCounter from "./components/StarCounter";
 import SoundManager from "./components/SoundManager";
-import SoundEnableButton from "./components/SoundEnableButton";
 
 export type GameSection = 'menu' | 'goodDeeds' | 'hadith' | 'values' | 'mosque';
 
@@ -62,9 +61,6 @@ function App() {
           </div>
         ))}
       </div>
-
-      {/* Sound Enable Button */}
-      <SoundEnableButton />
 
       {/* Star Counter */}
       <StarCounter />
