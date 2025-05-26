@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useGameStore } from "./lib/stores/useGameStore";
+import { useTranslations } from "./lib/translations";
 import GameMenu from "./components/GameMenu";
 import GoodDeeds from "./components/GoodDeeds";
 import HadithQuiz from "./components/HadithQuiz";
@@ -8,6 +9,7 @@ import MosqueCorner from "./components/MosqueCorner";
 import StarCounter from "./components/StarCounter";
 import SoundManager from "./components/SoundManager";
 import ProgressBoard from "./components/ProgressBoard";
+import LanguageToggle from "./components/LanguageToggle";
 
 export type GameSection = 'menu' | 'goodDeeds' | 'hadith' | 'values' | 'mosque';
 
