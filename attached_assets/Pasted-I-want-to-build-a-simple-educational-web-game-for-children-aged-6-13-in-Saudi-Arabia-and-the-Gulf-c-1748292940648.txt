@@ -1,0 +1,38 @@
+I want to build a simple educational web game for children aged 6–13 in Saudi Arabia and the Gulf, called "روّاد القيم" (Ruwwad Al-Qiyam).
+
+Requirements:
+
+- The game language: Arabic (RTL).
+- The interface must be colorful, child-friendly, and culturally appropriate, using these colors:
+
+  - Background gradient: from light olive green (#A3C293) to Saudi green (#007A33).
+  - Text color: white (#FFFFFF) and dark gray (#2E2E2E).
+  - Buttons: warm golden yellow (#FFD369) with orange highlight (#FFA726) on hover.
+  - Stars and rewards: shiny gold (#FFC107) with subtle glow.
+  
+- Font: Use Arabic-friendly font like "Cairo".
+- The game must be responsive and playable on mobiles, tablets, and web browsers.
+- Include a star counter visible at the top right.
+
+Game Sections (each as a button on main menu):
+
+1. ⭐ "عمل خيري": Clicking shows a simple good deed scenario (like "ابتسمت لأخيك الصغير") and awards a star with a cheerful animation and sound.
+
+2. 📚 "أحاديث نبوية": Display 3 short hadiths with kid-friendly explanations, followed by multiple-choice questions. Correct answers earn stars and sound feedback.
+
+3. 🧩 "مغامرات القيم": Interactive moral stories with choices (e.g., "رأيت زميلك يقع، ماذا تفعل؟"). Player earns stars based on correct moral choices reflecting the Prophet’s teachings.
+
+4. 🕋 "ركن المسجد": Teach kids wudu steps with fun instructions, mosque etiquette, and allow them to listen and repeat the adhan. Earn stars for correct steps.
+
+Extras:
+
+- Add sound effects on button clicks, correct answers, and star rewards.
+- Background changes by time of day (light blue morning to darker green evening).
+- Use animations for stars and feedback messages like "أحسنت!" or "يا بطل!" in Arabic.
+- Include a button to enable sounds on mobile devices.
+- Keep the code simple, modular, and easy to expand later.
+
+Please generate the full HTML, CSS, and JavaScript files with the above specifications, including placeholders for sounds and text content so I can edit and expand easily.
+
+Use modern, clean, readable code.
+

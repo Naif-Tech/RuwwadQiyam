@@ -1,0 +1,83 @@
+// إعدادات اللعبة الأساسية
+let stars = 0;
+const starCounter = document.getElementById('starCounter');
+const mainMenu = document.getElementById('mainMenu');
+const gameArea = document.getElementById('gameArea');
+const enableSoundBtn = document.getElementById('enableSoundBtn');
+let soundEnabled = false;
+
+// تفعيل الصوت عند الضغط على الزر
+enableSoundBtn.addEventListener('click', () => {
+  const audio = new Audio();
+  audio.play().then(() => {
+    enableSoundBtn.style.display = 'none';
+    alert('تم تفعيل الصوت! استمتع باللعب 🎉');
+    soundEnabled = true;
+  }).catch(() => {
+    alert('لا يمكن تشغيل الصوت في الوقت الحالي. حاول مرة أخرى.');
+  });
+});
+
+// دالة لتشغيل صوت النجاح (أضف رابط الصوت الصحيح في المكان المحدد)
+function playSuccessSound() {
+  if (soundEnabled) {
+    const successSound = new Audio('sounds/success.mp3'); // ضع ملف الصوت هنا
+    successSound.play();
+  }
+}
+
+// تحديث عداد النجوم
+function updateStarCounter() {
+  starCounter.textContent = `⭐ ${stars}`;
+}
+
+// عرض القائمة الرئيسية
+function showMainMenu() {
+  gameArea.classList.add('hidden');
+  mainMenu.classList.remove('hidden');
+}
+
+// عند الضغط على "عمل خيري"
+document.getElementById('goodDeedsBtn').addEventListener('click', () => {
+  mainMenu.classList.add('hidden');
+  gameArea.classList.remove('hidden');
+  showGoodDeedScenario();
+});
+
+// عرض سيناريو عمل خيري بسيط
+function showGoodDeedScenario() {
+  gameArea.innerHTML = `
+    <h2>عمل خيري</h2>
+    <p>ابتسمت لأخيك الصغير 😊</p>
+    <button id="collectStarBtn" class="choice-btn">احصل على نجمة!</button>
+    <button id="backBtn" class="choice-btn">العودة للقائمة الرئيسية</button>
+    <div id="feedback" class="feedback hidden"></div>
+  `;
+
+  document.getElementById('collectStarBtn').onclick = () => {
+    stars++;
+    updateStarCounter();
+    playSuccessSound();
+    showFeedback('أحسنت! نجمة جديدة 🌟');
+  };
+
+  document.getElementById('backBtn').onclick = () => {
+    showMainMenu();
+  };
+}
+
+// إظهار رسالة تشجيعية مع تأثير
+function showFeedback(msg) {
+  const feedback = document.getElementById('feedback');
+  feedback.textContent = msg;
+  feedback.classList.remove('hidden');
+  setTimeout(() => {
+    feedback.classList.add('hidden');
+  }, 3000);
+}
+
+// TODO: إضافة بقية الأقسام (أحاديث نبوية، مغامرات القيم، ركن المسجد) لاحقًا بنفس الأسلوب
+
+// بدء اللعبة بالقائمة الرئيسية
+updateStarCounter();
+showMainMenu();

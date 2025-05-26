@@ -1,0 +1,389 @@
+/* الخط العربي */
+body {
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #A3C293, #007A33);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* الرأس */
+header {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 122, 51, 0.9);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  border-radius: 0 0 20px 20px;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #FFD369;
+  text-shadow: 1px 1px 3px #000;
+}
+
+#starCounter {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFC107;
+  text-shadow: 1px 1px 3px #000;
+}
+
+/* القائمة الرئيسية */
+main#mainMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.menu-btn {
+  font-size: 1.6rem;
+  padding: 15px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  background-color: #FFD369;
+  color: #2E2E2E;
+  box-shadow: 0 4px 10px rgba(255, 211, 105, 0.7);
+  transition: background-color 0.3s ease;
+}
+
+.menu-btn:hover {
+  background-color: #FFA726;
+}
+
+/* إخفاء العناصر */
+.hidden {
+  display: none;
+}
+
+/* منطقة اللعب */
+#gameArea {
+  width: 90%;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  color: #fff;
+  min-height: 300px;
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.8);
+}
+
+/* أزرار الخيارات في اللعب */
+.choice-btn {
+  display: block;
+  width: 100%;
+  background-color: #FFD369;
+  color: #2E2E2E;
+  font-size: 1.3rem;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 211, 105, 0.7);
+  transition: background-color 0.3s ease;
+}
+
+.choice-btn:hover {
+  background-color: #FFA726;
+}
+
+/* رسالة التشجيع */
+.feedback {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFC107;
+  text-align: center;
+  margin-top: 15px;
+  text-shadow: 0 0 8px #FFD369;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 8px #FFD369;
+  }
+  to {
+    text-shadow: 0 0 20px #FFEA00;
+  }
+}
+
+/* أنماط الأحاديث النبوية */
+.hadith-container {
+  text-align: center;
+}
+
+.progress-container {
+  margin: 20px 0;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+}
+
+.progress-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background-color: #FFD369;
+  transform: scale(1.2);
+}
+
+.dot.completed {
+  background-color: #4CAF50;
+  animation: pulse 2s infinite;
+}
+
+.stats {
+  font-size: 0.9rem;
+  color: #FFC107;
+  margin: 10px 0;
+}
+
+.hadith-text {
+  background: rgba(255, 255, 255, 0.9);
+  color: #2E2E2E;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px 0;
+  border-right: 4px solid #4CAF50;
+}
+
+.hadith-content {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.hadith-narrator {
+  font-size: 1rem;
+  color: #666;
+  font-style: italic;
+}
+
+.explanation {
+  background: rgba(135, 206, 235, 0.2);
+  padding: 15px;
+  border-radius: 12px;
+  margin: 15px 0;
+  border-right: 4px solid #87CEEB;
+}
+
+.explanation h3 {
+  color: #FFD369;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.explanation p {
+  color: #fff;
+  line-height: 1.6;
+}
+
+.quiz-btn {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  margin: 20px 0;
+}
+
+.quiz-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  background-color: #007A33;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  flex: 1;
+  min-width: 100px;
+}
+
+.nav-btn:hover {
+  background-color: #005a26;
+}
+
+/* أنماط الاختبار */
+.quiz-container {
+  text-align: center;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.quiz-option {
+  background-color: #E3F2FD;
+  color: #2E2E2E;
+  border: 2px solid #2196F3;
+  padding: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  text-align: right;
+}
+
+.quiz-option:hover {
+  background-color: #BBDEFB;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+}
+
+.quiz-option:disabled {
+  cursor: not-allowed;
+}
+
+.quiz-option.correct {
+  background-color: #4CAF50;
+  color: white;
+  border-color: #4CAF50;
+  animation: correctAnswer 0.6s ease;
+}
+
+.quiz-option.incorrect {
+  background-color: #f44336;
+  color: white;
+  border-color: #f44336;
+  animation: shake 0.6s ease;
+}
+
+.feedback.success {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px 0;
+  animation: successFeedback 0.8s ease;
+}
+
+.feedback.error {
+  background: linear-gradient(45deg, #2196F3, #1976D2);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px 0;
+  animation: errorFeedback 0.8s ease;
+}
+
+.success-feedback p:first-child {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.error-feedback p:first-child {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* الرسوم المتحركة */
+@keyframes correctAnswer {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes successFeedback {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.9); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+@keyframes errorFeedback {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.7; 
+    transform: scale(1.1); 
+  }
+}
+
+/* تحسينات الاستجابة للأجهزة المحمولة */
+@media (max-width: 768px) {
+  .navigation {
+    flex-direction: column;
+  }
+  
+  .nav-btn {
+    min-width: auto;
+    margin: 5px 0;
+  }
+  
+  .hadith-content {
+    font-size: 1.1rem;
+  }
+  
+  .quiz-option {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}

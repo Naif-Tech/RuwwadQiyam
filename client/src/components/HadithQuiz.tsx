@@ -91,7 +91,7 @@ const HadithQuiz = ({ onBack }: HadithQuizProps) => {
             <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 arabic-text">
               الحديث الشريف
             </h2>
-            <div className="bg-green-50 p-6 rounded-2xl mb-8 border-r-4 border-green-500">
+            <div className="bg-green-50 p-6 rounded-2xl mb-6 border-r-4 border-green-500">
               <p className="text-lg md:text-xl text-gray-800 arabic-text leading-relaxed mb-4">
                 {currentHadith.text}
               </p>
@@ -99,6 +99,18 @@ const HadithQuiz = ({ onBack }: HadithQuizProps) => {
                 — {currentHadith.narrator}
               </p>
             </div>
+
+            {/* Kid-friendly explanation */}
+            {currentHadith.explanation && (
+              <div className="bg-blue-50 p-4 rounded-xl mb-8 border-r-4 border-blue-400">
+                <h3 className="text-lg font-bold text-blue-800 mb-2 arabic-text">
+                  🌟 شرح للأطفال
+                </h3>
+                <p className="text-md text-blue-700 arabic-text leading-relaxed">
+                  {currentHadith.explanation}
+                </p>
+              </div>
+            )}
 
             <button
               onClick={handleStartQuiz}
@@ -150,20 +162,27 @@ const HadithQuiz = ({ onBack }: HadithQuizProps) => {
 
         {/* Progress Indicator */}
         <div className="text-center mb-6">
-          <p className="text-gray-600 arabic-text">
+          <p className="text-gray-600 arabic-text mb-3">
             الحديث {currentHadithIndex + 1} من {hadithData.length}
           </p>
-          <div className="flex justify-center mt-2">
+          <div className="flex justify-center mt-2 mb-4">
             {hadithData.map((_, index) => (
               <div
                 key={index}
                 className={`
-                  w-3 h-3 rounded-full mx-1
-                  ${index === currentHadithIndex ? 'bg-blue-500' : 'bg-gray-300'}
-                  ${completedHadiths.includes(index) ? 'bg-green-500' : ''}
+                  w-4 h-4 rounded-full mx-1 transition-all duration-300
+                  ${index === currentHadithIndex ? 'bg-blue-500 scale-125' : 'bg-gray-300'}
+                  ${completedHadiths.includes(index) ? 'bg-green-500 animate-pulse' : ''}
                 `}
               />
             ))}
+          </div>
+          
+          {/* Stats */}
+          <div className="bg-gradient-to-r from-blue-100 to-green-100 p-3 rounded-xl">
+            <p className="text-sm text-gray-700 arabic-text">
+              🌟 أحاديث مكتملة: {completedHadiths.length} / {hadithData.length}
+            </p>
           </div>
         </div>
 
@@ -195,15 +214,27 @@ const HadithQuiz = ({ onBack }: HadithQuizProps) => {
       {/* Result Animation */}
       {showResult && (
         <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-50">
-          <div className="text-center bounce-in">
+          <div className="text-center bounce-in max-w-lg mx-4">
             <div className={`text-9xl mb-4 ${isCorrect ? 'star-collect' : ''}`}>
-              {isCorrect ? '⭐' : '❌'}
+              {isCorrect ? '⭐' : '💭'}
             </div>
-            <p className={`text-3xl font-bold arabic-text drop-shadow-lg ${
-              isCorrect ? 'text-green-300' : 'text-red-300'
+            <div className={`p-6 rounded-2xl shadow-2xl ${
+              isCorrect ? 'bg-green-500' : 'bg-blue-500'
             }`}>
-              {isCorrect ? 'إجابة صحيحة! نجمة جديدة!' : 'إجابة خاطئة، حاول مرة أخرى'}
-            </p>
+              <p className="text-2xl font-bold text-white arabic-text mb-2">
+                {isCorrect ? 'بارك الله فيك!' : 'لا بأس، تعلمنا شيئاً جديداً!'}
+              </p>
+              <p className="text-lg text-white/90 arabic-text mb-3">
+                {isCorrect ? 'إجابة صحيحة! نجمة جديدة!' : 'الإجابة الصحيحة هي:'}
+              </p>
+              {!isCorrect && (
+                <div className="bg-white/20 p-3 rounded-xl">
+                  <p className="text-white font-medium arabic-text">
+                    {currentHadith.quiz.options[currentHadith.quiz.correctAnswer]}
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}

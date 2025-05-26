@@ -1,0 +1,140 @@
+/* الخط العربي */
+body {
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #A3C293, #007A33);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* زر تفعيل الصوت */
+.sound-btn {
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #FFD369;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #2E2E2E;
+  transition: background-color 0.3s ease;
+}
+
+.sound-btn:hover {
+  background-color: #FFA726;
+}
+
+/* الرأس */
+header {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 122, 51, 0.9);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  border-radius: 0 0 20px 20px;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #FFD369;
+  text-shadow: 1px 1px 3px #000;
+}
+
+#starCounter {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFC107;
+  text-shadow: 1px 1px 3px #000;
+}
+
+/* القائمة الرئيسية */
+main#mainMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.menu-btn {
+  font-size: 1.6rem;
+  padding: 15px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  background-color: #FFD369;
+  color: #2E2E2E;
+  box-shadow: 0 4px 10px rgba(255, 211, 105, 0.7);
+  transition: background-color 0.3s ease;
+}
+
+.menu-btn:hover {
+  background-color: #FFA726;
+}
+
+/* إخفاء العناصر */
+.hidden {
+  display: none;
+}
+
+/* منطقة اللعب */
+#gameArea {
+  width: 90%;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  color: #fff;
+  min-height: 300px;
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.8);
+}
+
+/* أزرار الخيارات في اللعب */
+.choice-btn {
+  display: block;
+  width: 100%;
+  background-color: #FFD369;
+  color: #2E2E2E;
+  font-size: 1.3rem;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 211, 105, 0.7);
+  transition: background-color 0.3s ease;
+}
+
+.choice-btn:hover {
+  background-color: #FFA726;
+}
+
+/* رسالة التشجيع */
+.feedback {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFC107;
+  text-align: center;
+  margin-top: 15px;
+  text-shadow: 0 0 8px #FFD369;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 8px #FFD369;
+  }
+  to {
+    text-shadow: 0 0 20px #FFEA00;
+  }
+}
