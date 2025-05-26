@@ -1,5 +1,6 @@
 import { GameSection } from "../App";
 import { useGameStore } from "../lib/stores/useGameStore";
+import { useTranslations } from "../lib/translations";
 
 interface GameMenuProps {
   onSectionSelect: (section: GameSection) => void;
@@ -7,36 +8,37 @@ interface GameMenuProps {
 
 const GameMenu = ({ onSectionSelect }: GameMenuProps) => {
   const { playClickSound } = useGameStore();
+  const { translations, isRTL } = useTranslations();
 
   const menuItems = [
     {
       id: 'goodDeeds' as GameSection,
-      title: 'عمل خيري',
-      subtitle: 'قم بأعمال الخير واكسب النجوم',
+      title: translations.goodDeeds.title,
+      subtitle: translations.goodDeeds.subtitle,
       icon: '⭐',
       color: 'bg-green-500',
       hoverColor: 'hover:bg-green-600'
     },
     {
       id: 'hadith' as GameSection,
-      title: 'أحاديث نبوية',
-      subtitle: 'تعلم من أحاديث الرسول ﷺ',
+      title: translations.hadith.title,
+      subtitle: translations.hadith.subtitle,
       icon: '📚',
       color: 'bg-blue-500',
       hoverColor: 'hover:bg-blue-600'
     },
     {
       id: 'values' as GameSection,
-      title: 'مغامرات القيم',
-      subtitle: 'اختر القرار الصحيح',
+      title: translations.values.title,
+      subtitle: translations.values.subtitle,
       icon: '🧩',
       color: 'bg-purple-500',
       hoverColor: 'hover:bg-purple-600'
     },
     {
       id: 'mosque' as GameSection,
-      title: 'ركن المسجد',
-      subtitle: 'تعلم آداب المسجد والوضوء',
+      title: translations.mosque.title,
+      subtitle: translations.mosque.subtitle,
       icon: '🕋',
       color: 'bg-amber-500',
       hoverColor: 'hover:bg-amber-600'
@@ -52,11 +54,11 @@ const GameMenu = ({ onSectionSelect }: GameMenuProps) => {
     <div className="min-h-screen flex flex-col items-center justify-center p-4">
       {/* Game Title */}
       <div className="text-center mb-12 bounce-in">
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 arabic-text drop-shadow-lg">
-          روّاد القيم
+        <h1 className={`text-5xl md:text-7xl font-bold text-white mb-4 drop-shadow-lg ${isRTL ? 'arabic-text' : ''}`}>
+          {translations.gameTitle}
         </h1>
-        <p className="text-xl md:text-2xl text-white/90 arabic-text">
-          تعلم القيم الإسلامية بطريقة ممتعة
+        <p className={`text-xl md:text-2xl text-white/90 ${isRTL ? 'arabic-text' : ''}`}>
+          {translations.gameSubtitle}
         </p>
       </div>
 

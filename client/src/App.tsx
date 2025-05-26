@@ -16,12 +16,19 @@ export type GameSection = 'menu' | 'goodDeeds' | 'hadith' | 'values' | 'mosque';
 function App() {
   const [currentSection, setCurrentSection] = useState<GameSection>('menu');
   const [timeOfDay, setTimeOfDay] = useState<'morning' | 'evening'>('morning');
+  const { isRTL, fontFamily } = useTranslations();
 
   // Change background based on time of day
   useEffect(() => {
     const hour = new Date().getHours();
     setTimeOfDay(hour >= 18 || hour < 6 ? 'evening' : 'morning');
   }, []);
+
+  // Apply font family and direction based on language
+  useEffect(() => {
+    document.body.style.fontFamily = fontFamily;
+    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+  }, [fontFamily, isRTL]);
 
   const backgroundGradient = timeOfDay === 'morning' 
     ? 'linear-gradient(135deg, #87CEEB 0%, #2E8B57 100%)'
@@ -64,6 +71,9 @@ function App() {
           </div>
         ))}
       </div>
+
+      {/* Language Toggle */}
+      <LanguageToggle />
 
       {/* Progress Board */}
       <ProgressBoard />
