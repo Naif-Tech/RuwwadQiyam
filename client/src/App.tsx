@@ -10,6 +10,7 @@ import StarCounter from "./components/StarCounter";
 import SoundManager from "./components/SoundManager";
 import ProgressBoard from "./components/ProgressBoard";
 import LanguageToggle from "./components/LanguageToggle";
+import TopBar from "./components/TopBar";
 
 export type GameSection = 'menu' | 'goodDeeds' | 'hadith' | 'values' | 'mosque';
 
@@ -72,14 +73,11 @@ function App() {
         ))}
       </div>
 
-      {/* Language Toggle */}
-      <LanguageToggle />
-
-      {/* Progress Board */}
-      <ProgressBoard />
+      {/* Top Bar with all controls */}
+      <TopBar />
 
       {/* Main Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 pt-20">
         {renderCurrentSection()}
       </div>
 
