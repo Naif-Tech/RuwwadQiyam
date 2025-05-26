@@ -7,7 +7,7 @@ interface GoodDeedsProps {
 }
 
 const GoodDeeds = ({ onBack }: GoodDeedsProps) => {
-  const { stars, addStars, playSuccessSound, playClickSound } = useGameStore();
+  const { stars, addStars, playSuccessSound, playClickSound, incrementCompletedLessons } = useGameStore();
   const [currentDeedIndex, setCurrentDeedIndex] = useState(0);
   const [showReward, setShowReward] = useState(false);
   const [completedDeeds, setCompletedDeeds] = useState<number[]>([]);

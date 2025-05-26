@@ -6,6 +6,9 @@ interface GameState {
   soundEnabled: boolean;
   clickSound: HTMLAudioElement | null;
   successSound: HTMLAudioElement | null;
+  completedLessons: number;
+  totalGameSessions: number;
+  lastPlayDate: string;
   
   // Actions
   addStars: (amount: number) => void;
@@ -13,6 +16,9 @@ interface GameState {
   initializeSounds: () => void;
   playClickSound: () => void;
   playSuccessSound: () => void;
+  incrementCompletedLessons: () => void;
+  updateLastPlayDate: () => void;
+  getProgressPercentage: () => number;
 }
 
 export const useGameStore = create<GameState>()(
@@ -22,6 +28,9 @@ export const useGameStore = create<GameState>()(
       soundEnabled: true,
       clickSound: null,
       successSound: null,
+      completedLessons: 0,
+      totalGameSessions: 0,
+      lastPlayDate: new Date().toISOString().split('T')[0],
 
       addStars: (amount: number) => {
         set((state) => ({ stars: state.stars + amount }));
@@ -68,10 +77,34 @@ export const useGameStore = create<GameState>()(
           });
         }
       },
+
+      incrementCompletedLessons: () => {
+        set((state) => ({ 
+          completedLessons: state.completedLessons + 1,
+          totalGameSessions: state.totalGameSessions + 1
+        }));
+      },
+
+      updateLastPlayDate: () => {
+        const today = new Date().toISOString().split('T')[0];
+        set({ lastPlayDate: today });
+      },
+
+      getProgressPercentage: () => {
+        const { completedLessons } = get();
+        const totalAvailableLessons = 25; // Approximate total lessons across all sections
+        return Math.min((completedLessons / totalAvailableLessons) * 100, 100);
+      },
     }),
     {
       name: 'ruwwad-al-qiyam-game',
-      partialize: (state) => ({ stars: state.stars, soundEnabled: state.soundEnabled }),
+      partialize: (state) => ({ 
+        stars: state.stars, 
+        soundEnabled: state.soundEnabled,
+        completedLessons: state.completedLessons,
+        totalGameSessions: state.totalGameSessions,
+        lastPlayDate: state.lastPlayDate
+      }),
     }
   )
 );

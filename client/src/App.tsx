@@ -7,6 +7,7 @@ import ValuesAdventure from "./components/ValuesAdventure";
 import MosqueCorner from "./components/MosqueCorner";
 import StarCounter from "./components/StarCounter";
 import SoundManager from "./components/SoundManager";
+import ProgressBoard from "./components/ProgressBoard";
 
 export type GameSection = 'menu' | 'goodDeeds' | 'hadith' | 'values' | 'mosque';
 
@@ -21,8 +22,8 @@ function App() {
   }, []);
 
   const backgroundGradient = timeOfDay === 'morning' 
-    ? 'linear-gradient(135deg, #87CEEB 0%, #4169E1 100%)'
-    : 'linear-gradient(135deg, #2C3E50 0%, #000428 100%)';
+    ? 'linear-gradient(135deg, #87CEEB 0%, #2E8B57 100%)'
+    : 'linear-gradient(135deg, #2E8B57 0%, #1e5f3f 100%)';
 
   const renderCurrentSection = () => {
     switch (currentSection) {
@@ -62,8 +63,8 @@ function App() {
         ))}
       </div>
 
-      {/* Star Counter */}
-      <StarCounter />
+      {/* Progress Board */}
+      <ProgressBoard />
 
       {/* Main Content */}
       <div className="relative z-10">
