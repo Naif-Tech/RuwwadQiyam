@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 11% 98%; /* #F5F7FA */
+    --foreground: 215 16% 16%; /* #2C3E50 */
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 215 16% 16%; /* #2C3E50 */
+    --popover: 0 0% 100%; /* #FFFFFF */
+    --popover-foreground: 215 16% 16%; /* #2C3E50 */
+    --primary: 215 76% 55%; /* #4169E1 */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF */
+    --secondary: 210 40% 95%; /* #F1F5F9 */
+    --secondary-foreground: 215 16% 16%; /* #2C3E50 */
+    --muted: 210 40% 95%; /* #F1F5F9 */
+    --muted-foreground: 215 13% 50%; /* #64748B */
+    --accent: 210 40% 95%; /* #F1F5F9 */
+    --accent-foreground: 215 16% 16%; /* #2C3E50 */
+    --destructive: 0 72% 51%; /* #EF4444 */
+    --destructive-foreground: 0 0% 100%; /* #FFFFFF */
+    --border: 214 32% 91%; /* #E2E8F0 */
+    --input: 214 32% 91%; /* #E2E8F0 */
+    --ring: 215 76% 55%; /* #4169E1 */
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+    direction: rtl;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Cairo', 'Amiri', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  html {
+    direction: rtl;
+  }
+}
+
+/* Custom Arabic styles */
+.arabic-text {
+  font-family: 'Cairo', 'Amiri', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+
+/* Button animations */
+.game-button {
+  @apply transform transition-all duration-200 ease-in-out;
+}
+
+.game-button:hover {
+  @apply scale-105 shadow-lg;
+}
+
+.game-button:active {
+  @apply scale-95;
+}
+
+/* Star animation */
+@keyframes star-collect {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.star-collect {
+  animation: star-collect 0.6s ease-in-out;
+}
+
+/* Bounce animation for buttons */
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.bounce-in {
+  animation: bounce-in 0.5s ease-out;
+}
+
+/* Pulse effect for active elements */
+@keyframes pulse-gentle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.pulse-gentle {
+  animation: pulse-gentle 2s infinite;
+}
+
+/* RTL specific adjustments */
+.rtl-flex {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* Custom scrollbar for RTL */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
