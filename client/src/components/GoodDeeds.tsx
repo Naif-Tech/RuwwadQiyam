@@ -21,6 +21,7 @@ const GoodDeeds = ({ onBack }: GoodDeedsProps) => {
 
     playSuccessSound();
     addStars(1);
+    incrementCompletedLessons();
     setCompletedDeeds([...completedDeeds, currentDeedIndex]);
     setShowReward(true);
 

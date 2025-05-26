@@ -9,7 +9,7 @@ interface MosqueCornerProps {
 type Section = 'menu' | 'wudu' | 'adhan' | 'etiquette';
 
 const MosqueCorner = ({ onBack }: MosqueCornerProps) => {
-  const { addStars, playSuccessSound, playClickSound } = useGameStore();
+  const { addStars, playSuccessSound, playClickSound, incrementCompletedLessons } = useGameStore();
   const [currentSection, setCurrentSection] = useState<Section>('menu');
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
@@ -51,6 +51,7 @@ const MosqueCorner = ({ onBack }: MosqueCornerProps) => {
 
     playSuccessSound();
     addStars(1);
+    incrementCompletedLessons();
     setCompletedSteps([...completedSteps, currentStepIndex]);
     setShowReward(true);
 

@@ -7,7 +7,7 @@ interface ValuesAdventureProps {
 }
 
 const ValuesAdventure = ({ onBack }: ValuesAdventureProps) => {
-  const { addStars, playSuccessSound, playClickSound } = useGameStore();
+  const { addStars, playSuccessSound, playClickSound, incrementCompletedLessons } = useGameStore();
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [selectedChoice, setSelectedChoice] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
@@ -26,6 +26,7 @@ const ValuesAdventure = ({ onBack }: ValuesAdventureProps) => {
     if (choice.isCorrect) {
       playSuccessSound();
       addStars(choice.stars);
+      incrementCompletedLessons();
       setCompletedStories([...completedStories, currentStoryIndex]);
     }
 

@@ -7,7 +7,7 @@ interface HadithQuizProps {
 }
 
 const HadithQuiz = ({ onBack }: HadithQuizProps) => {
-  const { addStars, playSuccessSound, playClickSound } = useGameStore();
+  const { addStars, playSuccessSound, playClickSound, incrementCompletedLessons } = useGameStore();
   const [currentHadithIndex, setCurrentHadithIndex] = useState(0);
   const [showQuiz, setShowQuiz] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
@@ -34,6 +34,7 @@ const HadithQuiz = ({ onBack }: HadithQuizProps) => {
     if (correct) {
       playSuccessSound();
       addStars(1);
+      incrementCompletedLessons();
       setCompletedHadiths([...completedHadiths, currentHadithIndex]);
     }
 
@@ -222,10 +223,10 @@ const HadithQuiz = ({ onBack }: HadithQuizProps) => {
               isCorrect ? 'bg-green-500' : 'bg-blue-500'
             }`}>
               <p className="text-2xl font-bold text-white arabic-text mb-2">
-                {isCorrect ? 'بارك الله فيك!' : 'لا بأس، تعلمنا شيئاً جديداً!'}
+                {isCorrect ? 'أحسنت! قدوتك النبي ﷺ' : 'لا بأس، تعلمنا شيئاً جديداً!'}
               </p>
               <p className="text-lg text-white/90 arabic-text mb-3">
-                {isCorrect ? 'إجابة صحيحة! نجمة جديدة!' : 'الإجابة الصحيحة هي:'}
+                {isCorrect ? 'بارك الله فيك! نجمة جديدة!' : 'الإجابة الصحيحة هي:'}
               </p>
               {!isCorrect && (
                 <div className="bg-white/20 p-3 rounded-xl">
