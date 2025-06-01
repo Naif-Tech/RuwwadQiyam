@@ -22,10 +22,11 @@ export default defineConfig({
     },
   },
   root: path.resolve(__dirname, "client"),
-  build: {
-    outDir: path.resolve(__dirname, "dist"),
-    emptyOutDir: true,
-    assetsInclude: ["**/*.mp3", "**/*.ogg", "**/*.wav"],
-  },
+ build: {
+  outDir: path.resolve(__dirname, "dist"),
+  emptyOutDir: true,
+  assetsInclude: ["**/*.mp3", "**/*.ogg", "**/*.wav"], // ✅ هذا مهم
+},
+
   assetsInclude: ["**/*.gltf", "**/*.glb", "**/*.mp3", "**/*.ogg", "**/*.wav"],
 });
