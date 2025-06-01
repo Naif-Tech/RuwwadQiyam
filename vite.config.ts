@@ -25,6 +25,7 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
+    assetsInclude: ["**/*.mp3", "**/*.ogg", "**/*.wav"],
   },
   assetsInclude: ["**/*.gltf", "**/*.glb", "**/*.mp3", "**/*.ogg", "**/*.wav"],
 });
