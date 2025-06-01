@@ -9,7 +9,7 @@ interface GameState {
   completedLessons: number;
   totalGameSessions: number;
   lastPlayDate: string;
-  
+
   // Actions
   addStars: (amount: number) => void;
   toggleSound: () => void;
@@ -42,16 +42,17 @@ export const useGameStore = create<GameState>()(
 
       initializeSounds: () => {
         try {
-          const clickSound = new Audio('/sounds/hit.mp3');
-          const successSound = new Audio('/sounds/success.mp3');
-          
+          const basePath = import.meta.env.MODE === 'production' ? '/RuwwadQiyam/sound/' : '/sound/';
+          const clickSound = new Audio(`${basePath}hit.mp3`);
+          const successSound = new Audio(`${basePath}success.mp3`);
+
           clickSound.volume = 0.3;
           successSound.volume = 0.5;
-          
+
           // Preload sounds
           clickSound.load();
           successSound.load();
-          
+
           set({ clickSound, successSound });
         } catch (error) {
           console.log('Failed to initialize sounds:', error);
@@ -79,7 +80,7 @@ export const useGameStore = create<GameState>()(
       },
 
       incrementCompletedLessons: () => {
-        set((state) => ({ 
+        set((state) => ({
           completedLessons: state.completedLessons + 1,
           totalGameSessions: state.totalGameSessions + 1
         }));
@@ -98,8 +99,8 @@ export const useGameStore = create<GameState>()(
     }),
     {
       name: 'ruwwad-al-qiyam-game',
-      partialize: (state) => ({ 
-        stars: state.stars, 
+      partialize: (state) => ({
+        stars: state.stars,
         soundEnabled: state.soundEnabled,
         completedLessons: state.completedLessons,
         totalGameSessions: state.totalGameSessions,
