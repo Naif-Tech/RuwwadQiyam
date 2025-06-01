@@ -42,7 +42,7 @@ export const useGameStore = create<GameState>()(
 
       initializeSounds: () => {
         try {
-          const basePath = "/RuwwadQiyam/sounds/";
+          const basePath = import.meta.env.MODE === 'production' ? '/RuwwadQiyam/sound/' : '/sound/';
           const clickSound = new Audio(`${basePath}hit.mp3`);
           const successSound = new Audio(`${basePath}success.mp3`);
 
